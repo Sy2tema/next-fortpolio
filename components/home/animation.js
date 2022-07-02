@@ -8,7 +8,6 @@ export default function Animation() {
             loop
             animationData={lottieJson}
             play
-            style={{width: 150, height: 150}}
         />
     );
 }
