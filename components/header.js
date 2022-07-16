@@ -18,7 +18,7 @@ export default function Header () {
                         <Link href='/'>
                             <a className="mr-5 hover:text-gray-900">홈</a>
                         </Link>
-                        <Link href='/about_me'>
+                        <Link href='/projects'>
                             <a className="mr-5 hover:text-gray-900">프로젝트</a>
                         </Link>
                         <Link href='https://github.com/Sy2tema'>
