@@ -2,7 +2,7 @@ import Layout from "../components/layout";
 import Head from "next/head";
 import { TOKEN, DATABASE_ID } from "../config";
 
-export default function Projects({projectNames}) {
+export default function resResult({resResult}) {
     return (
         <Layout>
             <Head>
@@ -11,7 +11,10 @@ export default function Projects({projectNames}) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <section className="flex min-h-screen flex-col items-center justify-center text-gray-600 body-font">
-                <h1>나에 대한 소개 페이지입니다.</h1>
+                <h1>총 프로젝트 : {resResult.results.length}</h1>
+                {resResult.results.map((project) => (
+                    <h1>{project.properties.Name.title[0].plain_text}</h1>
+                ))}
             </section>
         </Layout>
     );
@@ -27,7 +30,15 @@ export async function getStaticProps() {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${TOKEN}`,
         },
-        body: JSON.stringify({page_size: 100})
+        body: JSON.stringify({
+            sorts: [
+                {
+                    "property": "Name",
+                    "direction": "ascending",
+                }
+            ],
+            page_size: 100
+        })
     };
     
     // await를 이용해 응답 데이터가 다 받아질때까지 대기
@@ -45,6 +56,6 @@ export async function getStaticProps() {
 
     // 외부로 전달하고자 하는 값들을 props안에 지정
     return {
-      props: {projectNames}, // will be passed to the page component as props
+      props: {resResult}, // will be passed to the page component as props
     }
 }
