@@ -17,7 +17,7 @@ export default function resResult({resResult}) {
                     <span className="pl-4 text-blue-500">{resResult.results.length}</span>
                 </h1>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full m-6 py-100">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 m-6 py-100">
                     {resResult.results.map((project) => (
                         <ProjectItem key={project.id} data={project} />
                     ))}
@@ -54,6 +54,7 @@ export async function getStaticProps() {
 
     // 응답 결과데이터를 JSON형식으로 변환
     const resResult = await response.json();
+    console.log("resResult: " + resResult.results);
 
     // 불러온 데이터 결과물들 중 id만 따로 분류
     const projectNames = resResult.results.map((project) => (

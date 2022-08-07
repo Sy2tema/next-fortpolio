@@ -13,11 +13,11 @@
 
 .project-card {
     @apply flex flex-col m-3 rounded-xl w-full
-            transition duration-300 transform border border-gray-300
-            hover:scale-105
+            transition duration-300 transform border border-gray-300 /* transition을 이용해 애니메이션 속도를 변경한다 */
+            hover:scale-105 /* 마우스를 올렸을 때 자연스럽게 크기가 커지도록 */
             hover:shadow-lg
             dark:border-gray-200/50
-            dark:hover:shadow-gray-400/40
+            dark:hover:shadow-gray-400/40 /* 은은한 그림자 효과 */
             hover:text-blue-600
 }
 
